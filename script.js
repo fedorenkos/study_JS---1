@@ -22,35 +22,34 @@
 // 3) Вызвать его метод чтобы получить элемент на странице
 
 
-
-// const input = document.querySelector('#input');
-// const out = document.querySelector('.out');
-// const div = document.createElement('div');
-// const p = document.createElement('p');
-function DomElement(selector, height, width, bg, fontsize){
-    this.selector = selector;
-    this.height = height;
-    this.width = width;
-    this.bg = bg;
-    this.fontsize = fontsize;
-        
-    DomElement.prototype.show = function(){
-        const div = document.createElement('div');
-        const p = document.createElement('p');
-        if (str[0] = '.') {
-            this.selector = block;
-        }
-        if (str[0] = '#') {
-            this.selector = best;
-        }
-        console.log(this.selector + ' ' + this.height + ' ' + this.width + ' ' + this.bg + ' ' + this.fontsize);
-    }
+function DomElement(selector, height, width, bg, fontSize){
+        this.selector = selector;
+        this.height = height;
+        this.width = width;
+        this.bg = bg;
+        this.fontSize = fontSize;
 };
-// console.log(div);
+DomElement.prototype.show = function(){
+    let element; 
+        if (this.selector[0] == '.') {
+            element = document.createElement('div');
+            element.className = this.selector.slice(1);
+            element.innerHTML = 'Hi';
+        }
+        if (this.selector[0] == '#'){
+            element = document.createElement('p');
+            element.setAttribute('id', 'best');
+            element.innerHTML = 'Hello World';
+        }
+        element.style.height = this.height;
+        element.style.width = this.width;
+        element.style.backgroundColor = this.bg;
+        element.style.fontSize = this.fontSize;
+        document.body.appendChild(element);
+        console.log(this.selector + ' ' + this.height + ' '+ this.width + ' ' + this.bg + ' ' + this.fontSize);
+}
 let block = new DomElement('.block', '15px', '50px', '#aaa', '15px');
-let best = new DomElement('#best', '30px', '30px', 'green', '30px');
-console.log(block);
-console.log(best);
+let best = new DomElement('#best', '30px', '100px', 'green', '20px');
 
 block.show();
 best.show();
