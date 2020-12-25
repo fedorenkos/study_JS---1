@@ -31,14 +31,14 @@ function DomElement(selector, height, width, bg, fontSize){
 };
 DomElement.prototype.show = function(){
     let element; 
-        if (this.selector[0] == '.') {
+        if (this.selector[0] === '.') {
             element = document.createElement('div');
             element.className = this.selector.slice(1);
             element.innerHTML = 'Hi';
         }
-        if (this.selector[0] == '#'){
+        if (this.selector[0] === '#'){
             element = document.createElement('p');
-            element.setAttribute('id', 'best');
+            element.setAttribute('id', this.selector.slice(1));
             element.innerHTML = 'Hello World';
         }
         element.style.height = this.height;
